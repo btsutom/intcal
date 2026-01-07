@@ -2,5 +2,6 @@
 *.a
 *.so
 *.out
-a.ou
+a.out
 *.core
+*~
