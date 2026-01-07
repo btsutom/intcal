@@ -1,0 +1,40 @@
+#ifndef _isdigits_
+#define _isdigits_
+
+/********************************
+ isdigits.c
+
+ 数字のみなら 0 を返す
+ それ以外は 1 を返す
+ ********************************/
+
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define TRUE  1
+#define FALSE 0
+
+int isdigits(char *av)
+{
+    int a = 0;
+
+    if (strlen(av) == 0) {
+        printf("空文字列です\n");
+        return TRUE;
+    }
+
+    while (av[a] != '\0') {
+        if (!isdigit((unsigned char)av[a])) {
+	    printf("%s は数字でない文字が含まれています\n", av);
+            printf("数字ではない文字: %c (%d)\n",
+                   av[a], av[a]);
+            return FALSE;
+        }
+        a++;
+    }
+
+    printf("%s は数字です\n", av);
+    return TRUE;
+}
+#endif

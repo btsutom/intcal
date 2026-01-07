@@ -1,0 +1,29 @@
+#include "intcal.h"
+#include <stdio.h>
+#include "subf.h"
+
+int main(int ac, char *av[])
+{
+	char *r[2048];
+	char *c[5]={"add", "sub", "mul", "div", "mod"};
+	int i;
+	char *method[]={"add", "sub", "mul", "div", "mod"};
+
+	if ( ac < 3 || ac > 3 ) {
+		printf("cmd int1 int2\n");
+		return FALSE;
+	}
+
+	if( !(isdigits(av[1]) & isdigits(av[2])) )
+		return FALSE;
+ 
+	for(i = 0; i<=4; i++) {
+		printf("--- %s ---\n\r", method[i]);
+		printf("%50s\n\r%50s\n\r", av[1], av[2]);
+		intcal(av[1], av[2], i+1, r);
+		printf("%50s\r\n\r\n", *r);
+	}
+
+	return TRUE;
+}
+	

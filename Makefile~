@@ -1,0 +1,29 @@
+CC = cc
+CFLAGS = -std=c99 -Wall -Wextra -O2
+AR = ar
+ARFLAGS = rcs
+
+SRC = main
+OBJS = $(SRC).o libintcal.a
+FILE = add digits2str mod str2digits comp div isdigits mul sub intcal
+SUBSRC = $(FILE:=.c)
+SUBOBJS = $(FILE:=.o)
+
+all: $(SRC)
+
+buildobj: $(SUBSRC)
+	$(CC)CC = cc
+	$(AR) $(ARFLAGS) libintcal.a $(SUBOBJS)
+
+$(SRC): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS)
+
+$(SRC).o: $(SRC).c intcal.h
+	$(CC) $(CFLAGS) -c $(SRC).c
+
+intcal.o: intcal.c intcal.h
+	$(CC) $(CFLAGS) -c intcal.c
+
+clean:
+	rm -f *.o $(SRC)
+
