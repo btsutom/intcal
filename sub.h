@@ -1,5 +1,5 @@
-#ifndef _sub_c_
-#define _sub_c_
+#ifndef _sub_h_
+#define _sub_h_
 
 #include <stddef.h>
 #include <stdlib.h>
